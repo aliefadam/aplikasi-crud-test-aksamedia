@@ -1,6 +1,6 @@
 import React from "react";
 
-function FormInput({ type, placeholder, label, icon, onChange }) {
+function FormInput({ type, placeholder, label, icon, onChange, value }) {
   return (
     <div className="mb-5">
       <label
@@ -14,6 +14,7 @@ function FormInput({ type, placeholder, label, icon, onChange }) {
           {icon}
         </div>
         <input
+          value={value}
           type={type}
           id={label}
           onChange={onChange}

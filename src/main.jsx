@@ -8,19 +8,28 @@ import "./assets/css/main.css";
 import About from "./pages/About.jsx";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
+import AuthMiddleware from "./components/AuthMiddleware.jsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
   {
     path: "/login",
     element: <Login />,
   },
   {
+    path: "/",
+    element: (
+      <AuthMiddleware>
+        <Home />
+      </AuthMiddleware>
+    ),
+  },
+  {
     path: "/about-us",
-    element: <About />,
+    element: (
+      <AuthMiddleware>
+        <About />
+      </AuthMiddleware>
+    ),
   },
 ]);
 
