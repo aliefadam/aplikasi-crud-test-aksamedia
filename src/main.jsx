@@ -5,11 +5,11 @@ import "./index.css";
 import "./assets/css/main.css";
 
 // Pages
-import About from "./pages/About.jsx";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import AuthMiddleware from "./components/AuthMiddleware.jsx";
 import TambahMahasiswa from "./pages/TambahMahasiswa.jsx";
+import EditMahasiswa from "./pages/EditMahasiswa.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +29,14 @@ const router = createBrowserRouter([
     element: (
       <AuthMiddleware>
         <TambahMahasiswa />
+      </AuthMiddleware>
+    ),
+  },
+  {
+    path: "/edit-mahasiswa",
+    element: (
+      <AuthMiddleware>
+        <EditMahasiswa />
       </AuthMiddleware>
     ),
   },

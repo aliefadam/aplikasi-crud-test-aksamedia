@@ -20,7 +20,7 @@ function Breadcrumb({ items }) {
       return (
         <>
           <Link
-            to={"/"}
+            to={"/?page=1"}
             className="text-primary hover:underline poppins-medium flex gap-2 items-center"
           >
             <i className="fa-regular fa-house"></i> Beranda

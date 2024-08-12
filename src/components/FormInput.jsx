@@ -8,6 +8,7 @@ function FormInput({
   onChange,
   value,
   className,
+  disabled = false,
 }) {
   return (
     <div className="">
@@ -24,6 +25,7 @@ function FormInput({
           {icon}
         </div>
         <input
+          disabled={disabled}
           value={value}
           type={type}
           id={label}

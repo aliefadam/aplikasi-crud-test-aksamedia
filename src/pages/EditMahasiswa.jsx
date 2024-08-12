@@ -6,46 +6,59 @@ import MyButton from "../components/MyButton";
 import Utils from "../utils/Utils";
 import { useNavigate } from "react-router-dom";
 
-function TambahMahasiswa() {
+function EditMahasiswa() {
+  const getMahasiswa = () => {
+    const mahasiswaDB = Utils.getFromLocalStorage("mahasiswa") || [];
+    const nim = Utils.getParam("nim");
+
+    return mahasiswaDB.find((mahasiswa) => mahasiswa.nim == nim);
+  };
+
   const navigate = useNavigate();
   const [mahasiswa, setMahasiswa] = useState({
-    nim: 0,
-    nama: "",
-    semester: 0,
-    jurusan: "Teknik Informatika",
+    nim: getMahasiswa().nim,
+    nama: getMahasiswa().nama,
+    semester: getMahasiswa().semester,
+    jurusan: getMahasiswa().jurusan,
   });
 
-  const tambahMahasiswa = (e) => {
+  const editMahasiswa = (e) => {
     e.preventDefault();
     const mahasiswaDB = Utils.getFromLocalStorage("mahasiswa") || [];
-    mahasiswaDB.push(mahasiswa);
+    const index = mahasiswaDB.findIndex((m) => m.nim == mahasiswa.nim);
+    mahasiswaDB[index] = mahasiswa;
     Utils.saveToLocalStorage("mahasiswa", mahasiswaDB);
     Utils.saveToLocalStorage("notifikasi", {
       type: "success",
-      message: "Mahasiswa ditambahkan",
+      message: "Mahasiswa diedit",
     });
     navigate("/?page=1");
   };
 
   return (
-    <MainLayout title={"Tambah Mahasiswa"} breadcrumb={["Tambah Mahasiswa"]}>
+    <MainLayout title={"Edit Mahasiswa"} breadcrumb={["Edit Mahasiswa"]}>
       <form
-        onSubmit={tambahMahasiswa}
+        onSubmit={editMahasiswa}
         method="POST"
         className="bg-white w-1/2 rounded-lg shadow-lg p-8 flex flex-col gap-5"
       >
         <FormInput
+          value={mahasiswa.nim}
           type={"number"}
           label={"NIM"}
           icon={<i className="fa-regular fa-list-ol"></i>}
+          className={"bg-gray-300 cursor-not-allowed"}
+          disabled={true}
           onChange={(e) => setMahasiswa({ ...mahasiswa, nim: e.target.value })}
         />
         <FormInput
+          value={mahasiswa.nama}
           label={"Nama"}
           icon={<i className="fa-regular fa-user"></i>}
           onChange={(e) => setMahasiswa({ ...mahasiswa, nama: e.target.value })}
         />
         <FormInput
+          value={mahasiswa.semester}
           type={"number"}
           label={"Semester"}
           icon={<i className="fa-regular fa-list-ol"></i>}
@@ -55,6 +68,7 @@ function TambahMahasiswa() {
         />
         <FormSelect
           label={"Jurusan"}
+          selected={mahasiswa.jurusan}
           options={["Teknik Informatika", "Teknik Mesin", "Teknik Industri"]}
           onChange={(e) =>
             setMahasiswa({ ...mahasiswa, jurusan: e.target.value })
@@ -62,9 +76,9 @@ function TambahMahasiswa() {
         />
         <div className="flex justify-end">
           <MyButton
-            text={"Tambah"}
+            text={"Simpan"}
             className={"bg-primary rounded-lg py-3.5"}
-            icon={<i className="fa-regular fa-user-plus"></i>}
+            icon={<i className="fa-regular fa-floppy-disk"></i>}
           />
         </div>
       </form>
@@ -72,4 +86,4 @@ function TambahMahasiswa() {
   );
 }
 
-export default TambahMahasiswa;
+export default EditMahasiswa;

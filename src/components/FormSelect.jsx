@@ -1,6 +1,6 @@
 import React from "react";
 
-function FormSelect({ options = [], label, onChange, value, className }) {
+function FormSelect({ options = [], label, onChange, selected }) {
   return (
     <div className="">
       {label !== "" && (
@@ -14,7 +14,11 @@ function FormSelect({ options = [], label, onChange, value, className }) {
       <div className="relative w-full">
         <div className="w-full border-2 p-2 flex items-center gap-1 border-primary rounded-lg">
           <i className="fa-regular fa-graduation-cap ms-1"></i>
-          <select className="w-full outline-none" onChange={onChange}>
+          <select
+            className="w-full outline-none"
+            onChange={onChange}
+            defaultValue={selected}
+          >
             {options.map((option, index) => (
               <option key={index} value={option}>
                 {option}

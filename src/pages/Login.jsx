@@ -11,7 +11,7 @@ function Login() {
 
   useEffect(() => {
     if (Utils.getFromLocalStorage("login")) {
-      navigate("/");
+      navigate("/?page=1");
     }
     document.title = `${title} - Login`;
   }, []);
@@ -39,7 +39,7 @@ function Login() {
         password === credentials.password
       ) {
         Utils.saveToLocalStorage("login", true);
-        navigate("/");
+        navigate("/?page=1");
       } else {
         setPassword("");
         showNotif();

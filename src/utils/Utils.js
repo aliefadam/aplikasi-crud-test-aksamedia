@@ -13,6 +13,11 @@ class Utils {
   static removeFromLocalStorage(key) {
     localStorage.removeItem(key);
   }
+
+  static getParam(param) {
+    const queryString = window.location.search;
+    return new URLSearchParams(queryString).get(param);
+  }
 }
 
 export default Utils;
