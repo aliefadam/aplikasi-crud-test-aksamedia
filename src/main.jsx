@@ -9,6 +9,7 @@ import About from "./pages/About.jsx";
 import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import AuthMiddleware from "./components/AuthMiddleware.jsx";
+import TambahMahasiswa from "./pages/TambahMahasiswa.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,10 +25,10 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/about-us",
+    path: "/tambah-mahasiswa",
     element: (
       <AuthMiddleware>
-        <About />
+        <TambahMahasiswa />
       </AuthMiddleware>
     ),
   },

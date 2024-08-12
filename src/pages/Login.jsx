@@ -7,7 +7,12 @@ import MyNotification from "../components/MyNotification";
 import Utils from "../utils/Utils";
 
 function Login() {
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (Utils.getFromLocalStorage("login")) {
+      navigate("/");
+    }
     document.title = `${title} - Login`;
   }, []);
 
@@ -23,8 +28,6 @@ function Login() {
   const hideNotif = () => {
     setShowNotification(false);
   };
-
-  const navigate = useNavigate();
 
   const login = (e) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ function Login() {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
+    <div className="w-full h-screen flex justify-center items-center bg-quarternary">
       <MyNotification
         type="error"
         message="Username atau password salah!"
@@ -58,7 +61,11 @@ function Login() {
         <h1 className="poppins-bold text-3xl text-center text-primary">
           Login
         </h1>
-        <form className="flex flex-col mt-10" onSubmit={login} method="POST">
+        <form
+          className="flex flex-col gap-5 mt-10"
+          onSubmit={login}
+          method="POST"
+        >
           <FormInput
             value={username}
             type={"text"}

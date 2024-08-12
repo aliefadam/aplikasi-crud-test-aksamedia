@@ -39,7 +39,11 @@ function MyNotification({ type, message, show = false, onClose }) {
         id="notification-body"
         className="animation-zoomIn bg-white w-[35%] px-10 py-8 rounded-lg shadow-lg flex flex-col items-center"
       >
-        <i className="fa-solid fa-circle-xmark text-7xl text-red-600"></i>
+        {type == "success" ? (
+          <i className="fa-solid fa-circle-check text-7xl text-green-600"></i>
+        ) : (
+          <i className="fa-solid fa-circle-xmark text-7xl text-red-600"></i>
+        )}
         <div className="mt-10 mb-7 flex flex-col gap-2">
           <h1 className="poppins-medium text-3xl text-center">
             {type == "success" ? "Berhasil" : "Gagal"}
