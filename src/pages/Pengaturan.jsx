@@ -35,19 +35,21 @@ function Pengaturan() {
       <form
         onSubmit={chageName}
         method="POST"
-        className="bg-white w-1/2 rounded-lg shadow-lg p-8 flex flex-col gap-5"
+        className="bg-white dark:bg-gray-900 w-1/2 rounded-lg shadow-lg p-8 flex flex-col gap-5"
       >
         <FormInput
           value={name}
           type={"text"}
           label={"Edit Nama Lengkap"}
-          icon={<i className="fa-regular fa-user"></i>}
+          icon={<i className="fa-regular fa-user dark:text-white"></i>}
           onChange={(e) => setName(e.target.value)}
         />
         <div className="flex justify-end">
           <MyButton
             text={"Simpan"}
-            className={"bg-primary rounded-lg py-3.5"}
+            className={
+              "bg-primary rounded-lg py-3.5 dark:bg-white dark:text-gray-900"
+            }
             icon={<i className="fa-regular fa-floppy-disk"></i>}
           />
         </div>

@@ -31,7 +31,7 @@ function FormInput({
           type={type}
           id={id}
           onChange={onChange}
-          className={`text-primary bg-white text-sm rounded-lg border-2 focus:shadow-md border-primary block w-full ps-10 p-2.5 ${className}`}
+          className={`text-primary outline-none bg-white text-sm rounded-lg border-2 focus:shadow-md border-primary dark:bg-gray-500 dark:placeholder:text-white dark:text-white dark:border-white block w-full ps-10 p-2.5 ${className}`}
           placeholder={placeholder}
           required={true}
         />

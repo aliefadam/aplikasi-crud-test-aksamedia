@@ -12,10 +12,10 @@ function FormSelect({ options = [], label, onChange, selected }) {
         </label>
       )}
       <div className="relative w-full">
-        <div className="w-full border-2 p-2 flex items-center gap-1 border-primary rounded-lg">
+        <div className="w-full border-2 p-2 flex items-center gap-1 border-primary rounded-lg dark:bg-gray-500 dark:placeholder:text-white dark:text-white dark:border-white">
           <i className="fa-regular fa-graduation-cap ms-1"></i>
           <select
-            className="w-full outline-none"
+            className="w-full outline-none dark:bg-gray-500 dark:placeholder:text-white dark:text-white dark:border-white"
             onChange={onChange}
             defaultValue={selected}
           >

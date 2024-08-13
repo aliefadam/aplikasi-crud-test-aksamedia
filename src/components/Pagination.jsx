@@ -29,10 +29,9 @@ function Pagination({ page, totalData, search }) {
           <li key={i}>
             <Link
               to={getChagePageURL(i)}
-              // to={`/?page=${i}`}
               className={`flex items-center justify-center px-5 h-10 leading-tight ${
                 i == halamanSekarang
-                  ? "text-primary poppins-medium bg-primary bg-opacity-10 cursor-default"
+                  ? "text-primary poppins-medium bg-primary bg-opacity-10 cursor-default dark:text-white"
                   : "hover:bg-gray-100 hover:text-gray-700 text-gray-500 bg-white"
               }  border border-gray-300 `}
             >

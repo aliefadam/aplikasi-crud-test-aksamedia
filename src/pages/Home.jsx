@@ -171,21 +171,17 @@ function Home() {
             label={""}
             id={"search"}
             placeholder={"Cari Mahasiswa..."}
-            icon={<i className="fa-regular fa-magnifying-glass"></i>}
+            icon={
+              <i className="fa-regular fa-magnifying-glass dark:text-white"></i>
+            }
             className={"w-[420px]"}
             onChange={(e) => handleSearch(e)}
           />
-          {/* <MyButton
-            onClick={handleSearch}
-            type={"button"}
-            text={"Cari"}
-            className={"bg-tertiary hover:bg-tertiary-hover rounded-md"}
-          /> */}
         </div>
         <div className="flex">
           <Link
             to={"/tambah-mahasiswa"}
-            className="bg-tertiary hover:bg-tertiary-hover duration-200 text-white flex gap-2 items-center rounded-md px-5 text-sm"
+            className="bg-tertiary dark:bg-yellow-600 dark:hover:bg-yellow-700 hover:bg-tertiary-hover duration-200 text-white flex gap-2 items-center rounded-md px-5 text-sm"
           >
             <i className="fa-regular fa-user-plus"></i> Tambah Mahasiswa
           </Link>
@@ -193,9 +189,9 @@ function Home() {
       </div>
 
       <div className="mt-10">
-        <table className="w-full border-2 border-primary">
+        <table className="w-full border-2 border-primary dark:border-gray-900">
           <thead>
-            <tr className="p-2 bg-primary text-white">
+            <tr className="p-2 bg-primary text-white dark:bg-gray-900">
               <th className="p-3">No</th>
               <th className="p-3">NIM</th>
               <th className="p-3">Nama</th>

@@ -37,12 +37,14 @@ function DeleteModal({ type, message, show = false, onClose, onConfirm }) {
     >
       <div
         id="delete-confirmation-body"
-        className="animation-zoomIn bg-white w-[35%] px-10 py-8 rounded-lg shadow-lg flex flex-col items-center"
+        className="animation-zoomIn bg-white dark:bg-gray-900 w-[35%] px-10 py-8 rounded-lg shadow-lg flex flex-col items-center"
       >
-        <i className="fa-solid fa-circle-exclamation text-7xl text-gray-600"></i>
+        <i className="fa-solid fa-circle-exclamation text-7xl text-gray-600 dark:text-gray-100"></i>
         <div className="mt-10 mb-7 flex flex-col gap-2">
-          <h1 className="poppins-medium text-3xl text-center">Konfirmasi</h1>
-          <span className="text-lg text-gray-700 text-center">
+          <h1 className="poppins-medium text-3xl text-center dark:text-white">
+            Konfirmasi
+          </h1>
+          <span className="text-lg text-gray-700 text-center dark:text-white">
             Apakah anda yakin ingin menghapus data ini?
           </span>
         </div>

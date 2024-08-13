@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import { title as staticTitle } from "../data/static-data";
-import Breadcrumb from "../components/Breadcrumb";
+import { Link } from "react-router-dom";
 import Utils from "../utils/Utils";
 
-function MainLayout({ title, breadcrumb = [], children }) {
-  useEffect(() => {
-    document.title = `${staticTitle} - ${title}`;
-  }, []);
+function NavbarDropdownTheme() {
+  useEffect(() => {});
 
   const [mode, setMode] = useState({
     name:
@@ -16,12 +12,6 @@ function MainLayout({ title, breadcrumb = [], children }) {
         : Utils.getFromLocalStorage("theme").name,
     icon: Utils.getFromLocalStorage("theme") == null ? "fa-moon" : "fa-sun",
   });
-
-  useEffect(() => {
-    Utils.applySavedTheme(() => {
-      changeMode(mode.name);
-    });
-  }, []);
 
   const changeMode = (theme) => {
     if (theme === "dark") {
@@ -61,19 +51,33 @@ function MainLayout({ title, breadcrumb = [], children }) {
   };
 
   return (
-    <div className="bg-quarternary dark:bg-gray-800 min-h-[calc(100vh-65px)]">
-      <Navbar />
-      <div className="px-10 py-5 mt-[65px]">
-        <div className="flex justify-between items-center mb-5">
-          <h1 className="text-2xl font-bold text-primary dark:text-quarternary">
-            {title}
-          </h1>
-          <Breadcrumb items={breadcrumb} />
-        </div>
-        {children}
-      </div>
+    <div className="absolute bg-white w-[200px] -bottom-[146px] right-0 shadow-md rounded-md overflow-hidden dark:bg-gray-800">
+      <button
+        onClick={() => changeMode("light")}
+        className="flex w-full p-3 hover:bg-gray-200 duration-200 cursor-pointer border-b-2 dark:hover:bg-gray-900"
+      >
+        <span className="text-primary text-sm flex items-center gap-2 dark:text-white">
+          <i className="fa-regular fa-sun"></i> Mode Terang
+        </span>
+      </button>
+      <button
+        className="flex w-full p-3 hover:bg-gray-200 duration-200 cursor-pointer border-b-2 dark:hover:bg-gray-900"
+        onClick={() => changeMode("dark")}
+      >
+        <span className="text-primary text-sm flex items-center gap-2 dark:text-white">
+          <i className="fa-regular fa-moon"></i> Mode Gelap
+        </span>
+      </button>
+      <button
+        className="flex w-full p-3 hover:bg-gray-200 duration-200 text-primary cursor-pointer dark:hover:bg-gray-900"
+        onClick={() => changeMode("system")}
+      >
+        <span className="text-sm flex items-center gap-2 dark:text-white">
+          <i className="fa-regular fa-gear"></i> Sistem
+        </span>
+      </button>
     </div>
   );
 }
 
-export default MainLayout;
+export default NavbarDropdownTheme;

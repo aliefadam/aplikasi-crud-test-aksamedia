@@ -18,6 +18,15 @@ class Utils {
     const queryString = window.location.search;
     return new URLSearchParams(queryString).get(param);
   }
+
+  static applySavedTheme = (changeMode) => {
+    const savedTheme = this.getFromLocalStorage("theme");
+    if (savedTheme) {
+      changeMode(savedTheme.name);
+    } else {
+      changeMode("system");
+    }
+  };
 }
 
 export default Utils;

@@ -10,6 +10,15 @@ function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (Utils.getFromLocalStorage("theme") == null) {
+      document.documentElement.classList.remove("dark");
+    } else {
+      if (Utils.getFromLocalStorage("theme").name === "Gelap") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    }
     if (Utils.getFromLocalStorage("login")) {
       navigate("/?page=1");
     }
@@ -50,16 +59,16 @@ function Login() {
   };
 
   return (
-    <div className="w-full h-screen flex justify-center items-center bg-quarternary">
+    <div className="w-full h-screen flex justify-center items-center bg-quarternary dark:bg-gray-800">
       <MyNotification
         type="error"
         message="Username atau password salah!"
         show={showNotification}
         onClose={hideNotif}
       />
-      <div className="p-10 bg-white shadow-lg rounded-xl w-[40%]">
-        <i className="fa-regular fa-users flex justify-center mb-5 text-4xl text-primary"></i>
-        <h1 className="poppins-bold text-3xl text-center text-primary">
+      <div className="p-10 bg-white dark:bg-gray-900 shadow-lg rounded-xl w-[40%]">
+        <i className="fa-regular fa-users flex justify-center mb-5 text-4xl text-primary dark:text-white"></i>
+        <h1 className="poppins-bold text-3xl text-center text-primary dark:text-white">
           Login
         </h1>
         <form
@@ -72,7 +81,7 @@ function Login() {
             type={"text"}
             placeholder={"admin"}
             label={"Username"}
-            icon={<i className="fa-regular fa-user"></i>}
+            icon={<i className="fa-regular fa-user dark:text-white"></i>}
             onChange={({ target }) => setUsername(target.value)}
           />
           <FormInput
@@ -80,7 +89,7 @@ function Login() {
             type={"password"}
             placeholder={"******"}
             label={"Password"}
-            icon={<i className="fa-regular fa-lock"></i>}
+            icon={<i className="fa-regular fa-lock dark:text-white"></i>}
             onChange={({ target }) => setPassword(target.value)}
           />
           <MyButton
@@ -91,7 +100,7 @@ function Login() {
               process ? "" : <i className="fa-regular fa-right-to-bracket"></i>
             }
             rounded={true}
-            className={`bg-primary ${
+            className={`bg-primary dark:bg-white dark:text-gray-900 dark:hover:bg-gray-300 ${
               process
                 ? "cursor-not-allowed bg-opacity-50"
                 : "focus:ring-primary-light hover:bg-primary-hover"

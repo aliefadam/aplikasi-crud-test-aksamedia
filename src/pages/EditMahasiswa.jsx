@@ -40,28 +40,28 @@ function EditMahasiswa() {
       <form
         onSubmit={editMahasiswa}
         method="POST"
-        className="bg-white w-1/2 rounded-lg shadow-lg p-8 flex flex-col gap-5"
+        className="bg-white dark:bg-gray-900 w-1/2 rounded-lg shadow-lg p-8 flex flex-col gap-5"
       >
         <FormInput
           value={mahasiswa.nim}
           type={"number"}
           label={"NIM"}
-          icon={<i className="fa-regular fa-list-ol"></i>}
-          className={"bg-gray-300 cursor-not-allowed"}
+          icon={<i className="fa-regular fa-list-ol dark:text-white"></i>}
+          className={"bg-gray-300 cursor-not-allowed dark:text-white"}
           disabled={true}
           onChange={(e) => setMahasiswa({ ...mahasiswa, nim: e.target.value })}
         />
         <FormInput
           value={mahasiswa.nama}
           label={"Nama"}
-          icon={<i className="fa-regular fa-user"></i>}
+          icon={<i className="fa-regular fa-user dark:text-white"></i>}
           onChange={(e) => setMahasiswa({ ...mahasiswa, nama: e.target.value })}
         />
         <FormInput
           value={mahasiswa.semester}
           type={"number"}
           label={"Semester"}
-          icon={<i className="fa-regular fa-list-ol"></i>}
+          icon={<i className="fa-regular fa-list-ol dark:text-white"></i>}
           onChange={(e) =>
             setMahasiswa({ ...mahasiswa, semester: e.target.value })
           }
@@ -77,7 +77,9 @@ function EditMahasiswa() {
         <div className="flex justify-end">
           <MyButton
             text={"Simpan"}
-            className={"bg-primary rounded-lg py-3.5"}
+            className={
+              "bg-primary rounded-lg py-3.5 dark:bg-white dark:text-gray-900"
+            }
             icon={<i className="fa-regular fa-floppy-disk"></i>}
           />
         </div>
