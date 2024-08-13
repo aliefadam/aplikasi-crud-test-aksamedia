@@ -7,6 +7,7 @@ import MyNotification from "../components/MyNotification";
 import Utils from "../utils/Utils";
 import DeleteModal from "../components/DeleteModal";
 import Pagination from "../components/Pagination";
+import { paginationView } from "../data/static-data";
 
 function Home() {
   const [showNotification, setShowNotification] = useState(
@@ -20,7 +21,7 @@ function Home() {
   const [page, setPage] = useState(parseInt(Utils.getParam("page")) || 1);
   const [startPage, setStartPage] = useState(page - 1);
   const [endPage, setEndPage] = useState(page);
-  const perPage = 4;
+  const perPage = paginationView;
 
   useEffect(() => {
     setPage(parseInt(Utils.getParam("page")) || 1);
@@ -29,8 +30,6 @@ function Home() {
     setStartPage((page - 1) * perPage);
     setEndPage(page * perPage);
   }, [page]);
-
-  console.log({ page, startPage, endPage });
 
   const showNotif = () => {
     setShowNotification(true);
@@ -63,13 +62,36 @@ function Home() {
     setShowNotification(true);
   };
 
-  const handleSearch = () => {
-    navigate(`/?search=${search}&page=${page}`);
+  const handleSearch = (e) => {
+    const newSearch = e.target.value;
+    setSearch(newSearch);
+    if (page != 1) {
+      if (newSearch === "") {
+        navigate(`/?page=1`);
+      } else {
+        navigate(`/?page=1&search=${newSearch}`);
+      }
+    } else {
+      if (newSearch === "") {
+        navigate(`/?page=${page}`);
+      } else {
+        navigate(`/?page=${page}&search=${newSearch}`);
+      }
+    }
   };
 
-  const getMahasiswa = () => {
-    const mahasiswaDB = Utils.getFromLocalStorage("mahasiswa") || [];
-    return mahasiswaDB.slice(startPage, endPage);
+  const getMahasiswa = (forPagination = false) => {
+    let mahasiswaDB = Utils.getFromLocalStorage("mahasiswa") || [];
+    const searchLower = search.toLowerCase();
+    mahasiswaDB = mahasiswaDB.filter(
+      (mahasiswa) =>
+        mahasiswa.nim.toLowerCase().includes(searchLower) ||
+        mahasiswa.nama.toLowerCase().includes(searchLower) ||
+        mahasiswa.semester.toLowerCase().includes(searchLower) ||
+        mahasiswa.jurusan.toLowerCase().includes(searchLower)
+    );
+
+    return forPagination ? mahasiswaDB : mahasiswaDB.slice(startPage, endPage);
   };
 
   const displayMahasiswa = () => {
@@ -147,17 +169,18 @@ function Home() {
             value={search}
             type={"text"}
             label={""}
+            id={"search"}
             placeholder={"Cari Mahasiswa..."}
             icon={<i className="fa-regular fa-magnifying-glass"></i>}
-            className={"w-[400px]"}
-            onChange={(e) => setSearch(e.target.value)}
+            className={"w-[420px]"}
+            onChange={(e) => handleSearch(e)}
           />
-          <MyButton
+          {/* <MyButton
             onClick={handleSearch}
             type={"button"}
             text={"Cari"}
             className={"bg-tertiary hover:bg-tertiary-hover rounded-md"}
-          />
+          /> */}
         </div>
         <div className="flex">
           <Link
@@ -186,7 +209,11 @@ function Home() {
         </table>
 
         <div className="flex justify-end mt-5">
-          <Pagination page={page} />
+          <Pagination
+            page={page}
+            totalData={getMahasiswa(true).length}
+            search={search}
+          />
         </div>
       </div>
     </MainLayout>

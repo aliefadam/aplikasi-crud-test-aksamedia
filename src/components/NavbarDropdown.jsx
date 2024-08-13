@@ -12,7 +12,7 @@ function NavbarDropdown() {
   return (
     <div className="absolute bg-white w-[200px] -bottom-[100px] right-0 shadow-md rounded-md overflow-hidden">
       <Link
-        to={"/setting"}
+        to={"/pengaturan"}
         className="flex p-3 hover:bg-gray-200 duration-200 cursor-pointer border-b-2"
       >
         <span className="text-primary text-sm flex items-center gap-2">

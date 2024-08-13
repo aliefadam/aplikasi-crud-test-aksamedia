@@ -1,6 +1,7 @@
 import React from "react";
 
 function FormInput({
+  id,
   type,
   placeholder,
   label,
@@ -28,7 +29,7 @@ function FormInput({
           disabled={disabled}
           value={value}
           type={type}
-          id={label}
+          id={id}
           onChange={onChange}
           className={`text-primary bg-white text-sm rounded-lg border-2 focus:shadow-md border-primary block w-full ps-10 p-2.5 ${className}`}
           placeholder={placeholder}

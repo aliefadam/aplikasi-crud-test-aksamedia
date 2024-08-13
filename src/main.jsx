@@ -10,6 +10,7 @@ import Login from "./pages/Login.jsx";
 import AuthMiddleware from "./components/AuthMiddleware.jsx";
 import TambahMahasiswa from "./pages/TambahMahasiswa.jsx";
 import EditMahasiswa from "./pages/EditMahasiswa.jsx";
+import Pengaturan from "./pages/Pengaturan.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
     element: (
       <AuthMiddleware>
         <EditMahasiswa />
+      </AuthMiddleware>
+    ),
+  },
+  {
+    path: "/pengaturan",
+    element: (
+      <AuthMiddleware>
+        <Pengaturan />
       </AuthMiddleware>
     ),
   },

@@ -1,12 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Utils from "../utils/Utils";
+import { paginationView } from "../data/static-data";
 
-function Pagination({ page }) {
-  const totalData = (Utils.getFromLocalStorage("mahasiswa") || []).length;
-  const tampilPerHalaman = 4;
+function Pagination({ page, totalData, search }) {
+  const tampilPerHalaman = paginationView;
   const totalHalaman = Math.ceil(totalData / tampilPerHalaman);
   const halamanSekarang = page;
+
+  const getChagePageURL = (pageParams) => {
+    if (search != "") {
+      return `/?page=${pageParams}&search=${search}`;
+    } else {
+      return `/?page=${pageParams}`;
+    }
+  };
 
   const showPaginate = () => {
     let li = [];
@@ -20,7 +28,8 @@ function Pagination({ page }) {
         {li.map((i) => (
           <li key={i}>
             <Link
-              to={`/?page=${i}`}
+              to={getChagePageURL(i)}
+              // to={`/?page=${i}`}
               className={`flex items-center justify-center px-5 h-10 leading-tight ${
                 i == halamanSekarang
                   ? "text-primary poppins-medium bg-primary bg-opacity-10 cursor-default"

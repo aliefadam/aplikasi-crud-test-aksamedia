@@ -39,6 +39,7 @@ function Login() {
         password === credentials.password
       ) {
         Utils.saveToLocalStorage("login", true);
+        Utils.saveToLocalStorage("credentials", credentials);
         navigate("/?page=1");
       } else {
         setPassword("");
