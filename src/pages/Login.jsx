@@ -10,20 +10,59 @@ function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (Utils.getFromLocalStorage("theme") == null) {
+    document.title = `${title} - Login`;
+  }, []);
+
+  const [mode, setMode] = useState({
+    name:
+      Utils.getFromLocalStorage("theme") == null
+        ? "Terang"
+        : Utils.getFromLocalStorage("theme").name,
+    icon: Utils.getFromLocalStorage("theme") == null ? "fa-moon" : "fa-sun",
+  });
+
+  useEffect(() => {
+    Utils.applySavedTheme(() => {
+      changeMode(mode.name);
+    });
+  }, []);
+
+  const changeMode = (theme) => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else if (theme === "light") {
       document.documentElement.classList.remove("dark");
-    } else {
-      if (Utils.getFromLocalStorage("theme").name === "Gelap") {
+    } else if (theme === "system") {
+      const prefersDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      if (prefersDarkMode) {
         document.documentElement.classList.add("dark");
       } else {
         document.documentElement.classList.remove("dark");
       }
     }
-    if (Utils.getFromLocalStorage("login")) {
-      navigate("/?page=1");
-    }
-    document.title = `${title} - Login`;
-  }, []);
+
+    setMode({
+      name: theme,
+      icon:
+        theme === "dark" ||
+        (theme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+          ? "fa-sun"
+          : "fa-moon",
+    });
+
+    Utils.saveToLocalStorage("theme", {
+      name: theme,
+      icon:
+        theme === "dark" ||
+        (theme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+          ? "fa-sun"
+          : "fa-moon",
+    });
+  };
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
