@@ -10,7 +10,7 @@ function NavbarDropdown() {
   };
 
   return (
-    <div className="absolute bg-white w-[200px] -bottom-[100px] right-0 shadow-md rounded-md overflow-hidden dark:bg-gray-800">
+    <div className="absolute bg-white w-[150px] md:w-[200px] lg:w-[200px] -bottom-[100px] right-0 shadow-md rounded-md overflow-hidden dark:bg-gray-800">
       <Link
         to={"/pengaturan"}
         className="flex p-3 hover:bg-gray-200 duration-200 cursor-pointer border-b-2 dark:hover:bg-gray-900"

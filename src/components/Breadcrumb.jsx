@@ -5,7 +5,7 @@ function Breadcrumb({ items }) {
   const renderItems = () => {
     if (items.length === 0) {
       return (
-        <span className="text-gray-700 flex gap-2 items-center dark:text-white">
+        <span className="text-gray-700 flex gap-2 items-center dark:text-white text-xs md:text-base lg:text-base">
           <i className="fa-regular fa-house"></i> Beranda
         </span>
       );
@@ -13,7 +13,7 @@ function Breadcrumb({ items }) {
       const el = items.map((item, index) => (
         <span
           key={index}
-          className="text-gray-700 flex items-center dark:text-white"
+          className="text-gray-700 flex items-center dark:text-white text-xs md:text-base lg:text-base"
         >
           <i className="fa-regular fa-chevron-right mx-2 text-sm text-gray-500"></i>
           {item}
@@ -24,7 +24,7 @@ function Breadcrumb({ items }) {
         <>
           <Link
             to={"/?page=1"}
-            className="text-primary dark:text-white hover:underline poppins-medium flex gap-2 items-center"
+            className="text-primary dark:text-white text-xs md:text-base lg:text-base hover:underline poppins-medium flex gap-2 items-center"
           >
             <i className="fa-regular fa-house"></i> Beranda
           </Link>
@@ -34,12 +34,7 @@ function Breadcrumb({ items }) {
     }
   };
 
-  return (
-    <div className="text-sm flex">
-      {renderItems()}
-      {/* <i className="fa-regular fa-chevron-right mx-2 text-sm text-gray-500"></i> */}
-    </div>
-  );
+  return <div className="flex">{renderItems()}</div>;
 }
 
 export default Breadcrumb;

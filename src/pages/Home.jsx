@@ -174,7 +174,7 @@ function Home() {
             icon={
               <i className="fa-regular fa-magnifying-glass dark:text-white"></i>
             }
-            className={"w-[420px]"}
+            className={"md:w-[450px] lg:w-[450px]"}
             onChange={(e) => handleSearch(e)}
           />
         </div>
@@ -183,13 +183,14 @@ function Home() {
             to={"/tambah-mahasiswa"}
             className="bg-tertiary dark:bg-yellow-600 dark:hover:bg-yellow-700 hover:bg-tertiary-hover duration-200 text-white flex gap-2 items-center rounded-md px-5 text-sm"
           >
-            <i className="fa-regular fa-user-plus"></i> Tambah Mahasiswa
+            <i className="fa-regular fa-user-plus"></i>{" "}
+            <span className="hidden md:block lg:block">Tambah Mahasiswa</span>
           </Link>
         </div>
       </div>
 
-      <div className="mt-10">
-        <table className="w-full border-2 border-primary dark:border-gray-900">
+      <div className="mt-5 md:mt-10 lg:mt-10 overflow-auto">
+        <table className="w-full border-2 border-primary dark:border-gray-900 text-xs md:text-base lg:text-base">
           <thead>
             <tr className="p-2 bg-primary text-white dark:bg-gray-900">
               <th className="p-3">No</th>
@@ -203,14 +204,13 @@ function Home() {
 
           <tbody>{displayMahasiswa()}</tbody>
         </table>
-
-        <div className="flex justify-end mt-5">
-          <Pagination
-            page={page}
-            totalData={getMahasiswa(true).length}
-            search={search}
-          />
-        </div>
+      </div>
+      <div className="flex justify-end mt-5">
+        <Pagination
+          page={page}
+          totalData={getMahasiswa(true).length}
+          search={search}
+        />
       </div>
     </MainLayout>
   );

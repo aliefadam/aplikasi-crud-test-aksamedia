@@ -51,7 +51,7 @@ function NavbarDropdownTheme() {
   };
 
   return (
-    <div className="absolute bg-white w-[200px] -bottom-[146px] right-0 shadow-md rounded-md overflow-hidden dark:bg-gray-800">
+    <div className="absolute bg-white w-[150px] md:w-[200px] lg:w-[200px] -bottom-[146px] right-0 shadow-md rounded-md overflow-hidden dark:bg-gray-800">
       <button
         onClick={() => changeMode("light")}
         className="flex w-full p-3 hover:bg-gray-200 duration-200 cursor-pointer border-b-2 dark:hover:bg-gray-900"

@@ -63,9 +63,9 @@ function MainLayout({ title, breadcrumb = [], children }) {
   return (
     <div className="bg-quarternary dark:bg-gray-800 min-h-[calc(100vh-65px)]">
       <Navbar />
-      <div className="px-10 py-5 mt-[65px]">
-        <div className="flex justify-between items-center mb-5">
-          <h1 className="text-2xl font-bold text-primary dark:text-quarternary">
+      <div className="px-3 md:px-10 lg:px-10 py-5 mt-[65px]">
+        <div className="flex flex-col md:flex-row lg:flex-row justify-between items-center mb-5">
+          <h1 className="text-2xl md:text-2xl lg:text-2xl font-bold text-primary dark:text-quarternary">
             {title}
           </h1>
           <Breadcrumb items={breadcrumb} />

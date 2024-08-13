@@ -37,7 +37,7 @@ function DeleteModal({ type, message, show = false, onClose, onConfirm }) {
     >
       <div
         id="delete-confirmation-body"
-        className="animation-zoomIn bg-white dark:bg-gray-900 w-[35%] px-10 py-8 rounded-lg shadow-lg flex flex-col items-center"
+        className="animation-zoomIn bg-white dark:bg-gray-900 w-[90%] md:w-[60%] lg:w-[40%] px-2 md:px-10 lg:px-10 py-8 rounded-lg shadow-lg flex flex-col items-center"
       >
         <i className="fa-solid fa-circle-exclamation text-7xl text-gray-600 dark:text-gray-100"></i>
         <div className="mt-10 mb-7 flex flex-col gap-2">

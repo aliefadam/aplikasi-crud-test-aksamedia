@@ -105,7 +105,7 @@ function Login() {
         show={showNotification}
         onClose={hideNotif}
       />
-      <div className="p-10 bg-white dark:bg-gray-900 shadow-lg rounded-xl w-[40%]">
+      <div className="p-10 bg-white dark:bg-gray-900 shadow-lg rounded-xl w-[90%] md:w-[60%] lg:w-[40%]">
         <i className="fa-regular fa-users flex justify-center mb-5 text-4xl text-primary dark:text-white"></i>
         <h1 className="poppins-bold text-3xl text-center text-primary dark:text-white">
           Login

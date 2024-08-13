@@ -40,7 +40,7 @@ function EditMahasiswa() {
       <form
         onSubmit={editMahasiswa}
         method="POST"
-        className="bg-white dark:bg-gray-900 w-1/2 rounded-lg shadow-lg p-8 flex flex-col gap-5"
+        className="bg-white dark:bg-gray-900 w-full md:w-1/2 lg:1/2 rounded-lg shadow-lg p-5 md:p-8 lg:p-8 flex flex-col gap-5"
       >
         <FormInput
           value={mahasiswa.nim}

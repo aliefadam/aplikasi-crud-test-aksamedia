@@ -29,7 +29,7 @@ function Pagination({ page, totalData, search }) {
           <li key={i}>
             <Link
               to={getChagePageURL(i)}
-              className={`flex items-center justify-center px-5 h-10 leading-tight ${
+              className={`flex items-center justify-center px-3.5 h-8 md:px-5 md:h-10 lg:px-5 lg:h-10 leading-tight ${
                 i == halamanSekarang
                   ? "text-primary poppins-medium bg-primary bg-opacity-10 cursor-default dark:text-white"
                   : "hover:bg-gray-100 hover:text-gray-700 text-gray-500 bg-white"
@@ -49,7 +49,7 @@ function Pagination({ page, totalData, search }) {
           <li>
             <Link
               to={`/?page=${page - 1}`}
-              className="flex items-center justify-center px-5 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700"
+              className="flex items-center justify-center px-3.5 h-8 md:px-5 md:h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700"
             >
               <svg
                 className="w-2.5 h-2.5 rtl:rotate-180"
@@ -74,7 +74,7 @@ function Pagination({ page, totalData, search }) {
           <li>
             <Link
               to={`/?page=${page + 1}`}
-              className="flex items-center justify-center px-5 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700"
+              className="flex items-center justify-center px-3.5 h-8 md:px-5 md:h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700"
             >
               <svg
                 className="w-2.5 h-2.5 rtl:rotate-180"
