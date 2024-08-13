@@ -45,7 +45,7 @@ function NavbarItem() {
         >
           <i className="fa-solid fa-moon text-sm"></i>
           <div className="flex items-center gap-2">
-            <span id="navbar-name-login">Tema</span>
+            <span>Tema</span>
             <i className="fa-solid fa-sort-down -translate-y-1"></i>
           </div>
         </div>
